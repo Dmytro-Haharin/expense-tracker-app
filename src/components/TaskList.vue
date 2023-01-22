@@ -8,7 +8,7 @@
                 <th>Value</th>
             </tr>
 
-            <tr class="item" v-for="item of data" v-bind:key="item.id">
+            <tr class="item" v-for="item of list" v-bind:key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.PaymentDate}}</td>
                 <td>{{item.PaymentDescription}}</td>
@@ -22,17 +22,23 @@
 
 export default{
     name:'TaskList',
-    props: ['data'], // принимаем данные из родидельского компонента
-    methods: {
+    computed:{
+        list(){
+            return this.$store.getters.getTaskListForThisPage
+        },
         
-    }
+    },
 }
 </script>
 
 <style lang="sass">
+body
+    background-color: #294298
 .list
     width: 600px
     margin: 0 auto
+    padding: 40px
+    
 .done 
     color: grey
     span
