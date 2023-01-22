@@ -1,28 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <TaskList></TaskList>
+    <TaskListPagination></TaskListPagination>
+    <TaskForm></TaskForm>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TaskForm from './components/TaskForm.vue';
+import TaskList from './components/TaskList.vue';
+import TaskListPagination from './components/TaskListPagination.vue';
 
 export default {
-  name: 'App',
+  name: 'App',  
+  mounted(){
+    this.$store.dispatch('loadProducts')
+  },
   components: {
-    HelloWorld
-  }
+    TaskList,
+    TaskForm,
+    TaskListPagination
+}
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+  body
+    padding: 0
+    margin: 0
+  #app
+    text-align: center
+
+  
 </style>
